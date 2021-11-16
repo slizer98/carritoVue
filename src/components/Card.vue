@@ -15,10 +15,13 @@
 export default {
     props:['producto'],
     methods: {
-        agregar(item){
-            // console.log(item)
-            this.$store.dispatch('agregarAlCarrito',item)
-            // console.log('carrito:',this.$store.state.carrito)
+        // agregar(item){
+        //     // console.log(item)
+        //     this.$store.dispatch('agregarAlCarrito',item)
+        //     // console.log('carrito:',this.$store.state.carrito)
+        // }
+        agregar(producto){
+            this.$store.dispatch('agregarAlCarrito',producto)
         }
     },
 }

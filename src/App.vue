@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="text-center">carrito + vue + vainilla</h1>
-    <hr />
+    <hr >
     <Carrito />
     <div class="row">
       <Card v-for="producto in productos" :key="producto.id" 
@@ -37,10 +37,8 @@ export default {
   },
   watch: {
     productos(){
-      // console.log('Cambia valor ', this.$store.state.productos)
     },
     carrito(){    
-
     }
   },
 

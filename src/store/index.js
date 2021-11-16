@@ -14,7 +14,19 @@ export default new Vuex.Store({
     },
     setCarrito(state, payload){
       state.carrito[payload.id] = payload
-    }
+    },
+    vaciarCarrito(state){
+      state.carrito = {}
+    },
+    aumentar(state, payload){
+      state.carrito[payload].cantidad = state.carrito[payload].cantidad + 1
+    },
+    disminuir(state, payload){
+      state.carrito[payload].cantidad = state.carrito[payload].cantidad - 1
+      if (state.carrito[payload].cantidad === 0) {
+        delete state.carrito[payload]
+      }
+    },
   },
   actions: {
     async fetchData( {commit} ){
@@ -34,6 +46,14 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters: {
+    totalCantidad(state){
+      return Object.values(state.carrito).reduce((acc, {cantidad}) => acc + cantidad, 0)
+    },
+    totalPrecio(state){
+      return Object.values(state.carrito).reduce((acc, {cantidad, precio}) => acc +cantidad * precio)
+    }
   }
 
 })
